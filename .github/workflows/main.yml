@@ -88,8 +88,8 @@ jobs:
           # В параметре tags задаётся название и тег для образа.
           # Для каждого пересобранного образа 
           # устанавливаем тег latest, чтобы потом
-          # на сервере и в docker-compose.yml не указывать версию
-          tags: XaverD/kittygram_final:latest
+          # на сервере и в docker-compose.yml не указывать верси
+          tags: xaverd/kittygram_final:latest
   frontend_tests:
     runs-on: ubuntu-latest
 
