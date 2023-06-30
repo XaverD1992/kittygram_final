@@ -31,5 +31,3 @@ services:
     volumes:
       - static_volume:/static/
       - media:/media
-    depends_on:
-      - backend
