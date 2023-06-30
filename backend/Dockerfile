@@ -18,7 +18,6 @@ COPY requirements.txt .
 # для установки зависимостей.
 RUN pip install -r requirements.txt --no-cache-dir
 
-RUN mkdir /app/media
 
 # Скопировать всё необходимое содержимое 
 # той директории локального компьютера, где сохранён Dockerfile,
