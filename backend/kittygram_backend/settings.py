@@ -1,4 +1,4 @@
-# flake8: noqadlk
+# flake8: noqadl
 import os
 from pathlib import Path
 
