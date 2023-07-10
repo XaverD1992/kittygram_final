@@ -1,0 +1,56 @@
+server {
+    server_name xaverd.bounceme.net;
+
+    location / {
+            proxy_set_header Host $http_host;
+	    proxy_pass http://127.0.0.1:8000;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/xaverd.bounceme.net/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/xaverd.bounceme.net/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server {
+    server_name gordik89.ddns.net;
+
+    location / {
+        proxy_set_header Host $http_host;
+        proxy_pass http://127.0.0.1:9000;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/gordik89.ddns.net/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/gordik89.ddns.net/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = xaverd.bounceme.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name xaverd.bounceme.net;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = gordik89.ddns.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name gordik89.ddns.net;
+    return 404; # managed by Certbot
+
+
+}
